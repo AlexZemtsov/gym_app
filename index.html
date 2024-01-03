@@ -3,33 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSV to SQLite</title>
+    <title>CSV to SQLite Import</title>
+    <!-- Include the sql.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.7.3/sql-wasm.min.js"></script>
   </head>
   <body>
-    <input type="file" id="csvFileInput" accept=".csv" />
-    <button onclick="importCSV()">Import CSV</button>
+    <input type="file" id="fileInput" accept=".csv" />
+    <button onclick="readCSV()">Read CSV</button>
+    <button onclick="importCSVData()">Import to SQLite</button>
+
+    <!-- Link to the separate JavaScript file -->
+    <script src="importLogic.js"></script>
 
     <script>
-      function importCSV() {
-        const input = document.getElementById("csvFileInput");
-        const file = input.files[0];
+      // Function to read the content of the selected CSV file
+      function readCSV() {
+        var fileInput = document.getElementById("fileInput");
+        var file = fileInput.files[0];
 
         if (file) {
-          const formData = new FormData();
-          formData.append("csvFile", file);
+          var reader = new FileReader();
 
-          fetch("/import", {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              alert(data.message);
-            })
-            .catch((error) => console.error("Error:", error));
+          reader.onload = function (e) {
+            var csvContent = e.target.result;
+            processCSVData(csvContent);
+          };
+
+          reader.readAsText(file);
         } else {
-          alert("Please choose a CSV file.");
+          alert("Please select a CSV file.");
         }
+      }
+
+      // Function to process the CSV data
+      function processCSVData(csvContent) {
+        // Parse CSV and extract required columns
+        // Here, you need to implement your own CSV parsing logic
+        // For simplicity, I'll provide a basic example assuming the CSV is well-formed
+        var rows = csvContent.split("\n");
+        var data = [];
+
+        for (var i = 1; i < rows.length; i++) {
+          var columns = rows[i].split(",");
+          data.push({
+            gym: columns[0],
+            team: columns[1],
+            name: columns[2],
+            number: columns[3],
+            level: columns[4],
+            pommel_exec: columns[5],
+            rings_exec: columns[6],
+            vault_exec: columns[7],
+            pbars_exec: columns[8],
+            hbar_exec: columns[9],
+          });
+        }
+
+        console.log(data);
+        // At this point, 'data' contains the extracted CSV data
+        // You can perform further processing or display the data as needed
+      }
+
+      // Function to trigger the import logic from the separate file
+      function importCSVData() {
+        // Assuming 'data' is the processed CSV data
+        importToSQLite(data);
       }
     </script>
   </body>
