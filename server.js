@@ -1,7 +1,7 @@
-// importLogic.js
+// server.js
 
 // Function to import data into SQLite database
-function importToSQLite(data) {
+function importCSVData(data) {
   // SQLite database initialization
   var db = new SQL.Database();
 
