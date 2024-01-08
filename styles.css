@@ -1,0 +1,32 @@
+.search {
+  border-radius: 5px;
+  background: rgb(255, 189, 65);
+  width: 50px;
+  height: 20px; 
+}
+
+.csv {
+    border-radius: 5px;
+    background: rgb(255, 189, 65);
+    width: 50px;
+    height: 20px; 
+}
+
+.import {
+    border-radius: 5px;
+    background: rgb(255, 189, 65);
+    width: 50px;
+    height: 20px; 
+}
+
+.html {
+    background-color: grey;
+}
+
+.searchbar {
+    border-radius: 4px;
+}
+
+.searchbar :hover {
+    cursor: text;
+}
