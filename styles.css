@@ -1,32 +1,55 @@
 .search {
   border-radius: 5px;
   background: rgb(255, 189, 65);
-  width: 50px;
-  height: 20px; 
+  width: 75px;
+  height: 30px; 
+  font-size: larger;
 }
 
 .csv {
     border-radius: 5px;
     background: rgb(255, 189, 65);
-    width: 50px;
-    height: 20px; 
+    width: 70px;
+    height: 30px; 
+    font-size: larger;
 }
 
 .import {
     border-radius: 5px;
     background: rgb(255, 189, 65);
-    width: 50px;
-    height: 20px; 
+    width: 70px;
+    height: 30px; 
+    font-size: larger;
 }
 
 .html {
-    background-color: grey;
+    background-color: rgb(78, 78, 78);
+    display: flex;
 }
 
 .searchbar {
     border-radius: 4px;
+    font-size: larger;
 }
 
 .searchbar :hover {
     cursor: text;
+}
+
+.score {
+    display: flex;
+  flex-wrap: nowrap;
+    border-radius: 5px;
+    background: rgb(255, 189, 65);
+    width: 170px;
+    height: 90px; 
+    font-size: xx-large;
+}
+
+.finalscore {
+    border-radius: 5px;
+    background: rgb(255, 189, 65);
+    width: 180px;
+    height: 90px; 
+    font-size: xx-large;
 }
